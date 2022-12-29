@@ -1,0 +1,26 @@
+.Friends-container{
+    display: grid;
+    grid-template-columns: 18rem auto;
+    gap: 7rem;
+    margin-left: 10px;
+}
+.Friends{
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+    margin: 0;
+}
+@media screen and (max-width:1024px){
+    
+    /* .menuBox{
+        width: 5%;
+    } */
+    .Friends-container{
+        display: grid;
+        grid-template-columns:3rem auto;
+        gap: 1rem;
+        margin-left: 10px;
+    }
+    
+   
+}

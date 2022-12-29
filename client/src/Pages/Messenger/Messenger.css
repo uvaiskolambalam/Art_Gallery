@@ -1,0 +1,130 @@
+.navBar{
+    display: flex;
+    gap: 90px;
+}
+.messenger{
+    height: calc(100vh -70px);
+    display: flex;
+    margin-top:90px ;
+}
+.chatMenu{
+    flex: 3.5;
+}
+.chatMenuWrapper input{
+    /* width: 90%;
+    padding: 10px 0;
+    border: none; */
+    border-style: none;
+    background-color: transparent;
+     width: 90%;
+     height: 2rem;
+   
+     -webkit-appearance: none;
+     outline: none;
+     box-shadow: var(--shadow);
+     border-radius: 10px;
+     padding-left: 10px;
+     box-shadow: 10px saddlebrown;
+     
+}
+.chatBox{
+    flex: 5.5;
+    
+}
+.chatBoxBottom{
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color:#0b141a;
+    box-shadow: var(--shadow);
+    
+    border-radius: 10px;
+}
+.chatMessageInput{
+    overflow: hidden;
+    max-width: 90%;
+    background-color: transparent;
+    border-style: none;
+    width: 90%;
+    -webkit-appearance: none;
+    outline: none;
+    padding: 10px 10px 0px 0px;
+    /* height: 20px; */
+    color: white;
+    
+}
+.chatBoxWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    background-color: #0b141a;
+    background-image: url(./bg-image.jpeg);
+    border-radius: 10px;
+}
+.chatBoxTop{
+    /* background: linear-gradient(to right, darkblue, darkorchid) border-box; */
+    height: 70vh;
+    overflow-y: scroll;
+}
+.chatBoxTop::-webkit-scrollbar{
+    display: none;
+}
+.chatSubmitButton{
+    border-style: none;
+    background-color: #0476c2;
+    /* padding-right: 10px; */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.chatSubmitButtonContainer{
+    background-color:#0476c2;
+    border: 1px solid white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.chatSubmitButton:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+   
+
+}
+.chatOnline{
+    flex: 3;
+}
+.chatMenuWrapper, .chatBoxWrapper, .chatOnlineWrapper{
+   padding: 10px;
+  height: 100%;
+}
+.noConversation-container{
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    
+}
+.noConversation-container img{
+    width: 10rem;
+}
+.noConversationText{
+    color: rgb(196, 192, 192);
+    /* position: absolute; */
+    font-size: 30px;
+    display: flex;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    text-align: center;
+    /* top: 40%;
+    left: 20%;
+    font-weight: 800; */
+}

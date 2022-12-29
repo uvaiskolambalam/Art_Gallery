@@ -1,0 +1,54 @@
+.modalInput{
+    width: 100%;
+    height: 2.5rem;
+    border-radius: 8px;
+    border-style: none;
+    box-shadow: var(--shadow);
+    background-color:var(--body) ;
+    -webkit-appearance: none;
+    outline: none;
+    padding-left: .5rem;
+}
+.imageUpload input[type='file']{
+    display: none;
+
+}
+.imageUpload label{
+    color: white;
+    
+}
+.imageUpload{
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+.photo-upload-button{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: -webkit-linear-gradient(#C92C5F,#7A3986);
+    border-radius: 10px;
+    padding: .5rem;
+    gap: .5rem;
+    /* background-color: #f5af09; */
+}
+.imageUpload img{
+    width: 14%;
+}
+.postUpload-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+   
+}
+.contentUpload{
+   
+    width: 100%;
+}

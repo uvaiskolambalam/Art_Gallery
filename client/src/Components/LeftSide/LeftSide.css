@@ -1,0 +1,23 @@
+.leftSide{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+}
+.leftSide-groupHeading{
+    font-weight: 600;
+}
+
+@media screen and (max-width:1024px){
+   
+    .leftSide-group{
+        display: none;
+    }
+}
+
+
+
+
+/* about */
+
+/* about */

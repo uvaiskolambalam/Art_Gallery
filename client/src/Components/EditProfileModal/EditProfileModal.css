@@ -1,0 +1,15 @@
+#edit-btn{
+    width: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+}
+#edit-btn:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+
+}
+#edit-icon{
+    width: 1.5rem;
+}

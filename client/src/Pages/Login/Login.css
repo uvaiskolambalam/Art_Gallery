@@ -1,0 +1,13 @@
+.Login{
+    display: flex;
+    height: 100vh;
+    gap: 1rem;
+    
+    
+}
+@media screen and (max-width:596px){
+    .Login{
+        flex-direction: column;
+        padding: 1rem;
+    }
+}

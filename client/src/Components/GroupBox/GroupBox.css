@@ -1,0 +1,53 @@
+.group-box{
+    display: flex;
+   flex-direction: column;
+    gap: .5rem;
+    width: 80%;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: var(--shadow);
+    
+    
+
+}
+.group-box-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.group-box-grouName{
+    margin-top: 9px;
+    margin-left: 10px;
+}
+
+.group-box-iconDiv{
+    width: 1.5rem;
+    height: 1.5rem;
+   background: linear-gradient(to right, darkblue, darkorchid) border-box;
+  border-radius: 50%;
+  border: 4px solid transparent;
+    overflow: hidden;
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+}
+.group-box-iconDiv img{
+    width: 100%;
+}
+.follow-button button:hover{
+    cursor: pointer;
+
+}
+#follow-btn{
+    width: 2rem;
+    border-radius: 50%;
+}
+#follow-btn:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+
+}
+.follow-icon{
+    width: 1.4rem;
+}

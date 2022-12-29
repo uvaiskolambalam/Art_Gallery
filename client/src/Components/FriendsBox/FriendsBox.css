@@ -1,0 +1,44 @@
+.FriendsBox{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    width: 80%;
+    border-radius: 10px;
+    padding: 5px;
+    box-shadow: var(--shadow);
+}
+.FriendsBox-Profile{
+    width: 1.5rem;
+    height: 1.5rem;
+   background: linear-gradient(to right, darkblue, darkorchid) border-box;
+  border-radius: 50%;
+  border: 4px solid transparent;
+    overflow: hidden;
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+
+}
+.FriendsBox-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px;
+    
+}
+.FriendsBox-container:hover{
+    cursor: pointer;
+}
+#unFollow-btn{
+    width: 2rem;
+    border-radius: 50%;
+}
+#unFollow-btn:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+
+}
+.unFollow-icon{
+    width: 1.4rem;
+}

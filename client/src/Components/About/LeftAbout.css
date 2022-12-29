@@ -1,0 +1,20 @@
+.about{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    gap: 1rem;
+    /* border: 1px solid ; */
+    border-radius: 10px;
+    padding:8px ;
+    box-shadow: var(--shadow);
+    background: rgba(3, 50, 88, 0.2)
+    
+}
+.about-logo img{
+    width: 100%;
+}
+@media screen and (max-width:1024px){
+    .about{
+        display: none;
+    }
+}

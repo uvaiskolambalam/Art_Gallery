@@ -1,0 +1,26 @@
+.postSide{
+    max-height: 100vh;
+    overflow: scroll;
+ 
+}
+.postSide::-webkit-scrollbar{
+    display: none;
+}
+.advertestment-container marquee{
+    display: flex;
+    gap: 2rem;
+    width: 97.5%;
+    /* height: 10px; */
+    /* background: linear-gradient(to right, #C92C5F,#7A3986) border-box; */
+    margin-bottom: 1.5rem;
+    border-radius: 10px;
+    /* box-shadow: var(--shadow); */
+    /* background-color: white; */
+}
+.advertestment-image{
+    height: 3rem;
+}
+/* .advertestment-container marquee{
+    background-color: red;
+    width: 20px;
+} */

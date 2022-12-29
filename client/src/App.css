@@ -1,0 +1,45 @@
+:root{
+  --body:#F1F2F6;
+  --gradient:linear-gradient(#C92C5F,#7A3986);
+  --shadow:rgba(99,99,99,0.2) 0px 3px 8px 0px;
+   
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+.navBar-index{
+  z-index: 1; 
+}
+
+body{
+  background-color: var(--body);
+  color: rgb(0, 0, 0);
+  
+}
+.dark-mode{
+  color: rgb(56, 54, 54);
+  background-color: rgb(26, 25, 25);
+}
+*{
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+}
+@media screen and (max-width:1024px){
+  *{
+    font-size: 16px;
+  }
+}
+.button-general{
+  background: -webkit-linear-gradient(#C92C5F,#7A3986);
+    color: white;
+    border: none;
+    width: 6rem;
+    height: 2rem;
+    border-radius: 7px;
+    transition: all .4s linear;
+}
+.ant-modal-title{
+  display: none;
+}

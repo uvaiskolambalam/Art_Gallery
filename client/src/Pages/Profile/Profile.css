@@ -1,0 +1,50 @@
+.profile-container{
+    display: grid;
+    grid-template-columns: 18rem auto;
+    gap: 3rem;
+    margin-left: 10px;
+
+}
+.profile{
+    display: flex;
+    flex-direction: column;
+    gap: 90px;
+    margin: 0;
+    max-width:84.5rem ;
+}
+.prifile-left{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+@media screen and (max-width:1024px){
+    
+    /* .menuBox{
+        width: 5%;
+    } */
+    .profile-container{
+        display: grid;
+        grid-template-columns:3rem auto;
+        gap: 1rem;
+        margin-left: 10px;
+    }
+    
+   
+}
+@media screen and (max-width:550px){
+   
+    .profile-container{
+        display: grid;
+        grid-template-columns:3rem auto;
+        gap: 3rem;
+        margin-left: 10px;
+    }
+}
+.ProfileSide{
+    max-height: 100vh;
+    overflow: scroll;
+ 
+}
+.ProfileSide::-webkit-scrollbar{
+    display: none;
+}

@@ -1,0 +1,53 @@
+.MenuBox{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    gap: 1rem;
+    /* border: 1px solid ; */
+    border-radius: 10px;
+    /* padding:2rem ; */
+    box-shadow: var(--shadow);
+    background-color: white;
+    
+  
+}
+
+.MenuBox-item{
+    padding: 0px 15px ;
+}
+.MenuBox-item p{
+    font-size: 1rem;
+}
+.MenuBox-item img{
+    width: 1rem;
+}
+/* .for-flex{
+    display: flex;
+    gap: 1rem;
+
+} */
+.MenuBox-item:hover{
+    background: rgba(3, 50, 88, 0.2);
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+.MenuBox-item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    line-height: 2rem;
+}
+.MenuBox-extra-item{
+    display: none;
+}
+@media screen and (max-width:1024px){
+    .MenuBox-item p{
+        display: none;
+    }
+    /* .MenuBox{
+        display: flex;
+        width: 5%;
+    } */
+    
+}
