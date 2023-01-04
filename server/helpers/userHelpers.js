@@ -12,20 +12,21 @@ module.exports = {
       // console.log(userData);
       //console.log('eeeeeeeeeeeeeeee');
       await client.verify
-        .services(serviceId)
-        .verifications.create({
-          to: `+91${userData.mobile}`,
-          channel: "sms",
-        })
-        .then((reeee) => {
-          console.log("poda");
-          res.valid = true;
-          resolve(res);
-          console.log(reeee, "reee");
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      .services(serviceId)
+      .verifications.create({
+        to: `+91${userData.mobile}`,
+        channel: "sms",
+      })
+      .then((reeee) => {
+        console.log("poda");
+        res.valid = true;
+        resolve(res);
+        console.log(reeee, "reee");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+      debugger
     });
   },
   otpVerify: (userData) => {

@@ -9,30 +9,44 @@ import {setUser,setUserData} from '../../Redux/UserSlice'
 import Cookie  from "js-cookie"
 import Url from '../Instence/Base_uel'
 
+
 const LoginBox = () => {
   const navigate=useNavigate()
   const dispatch=useDispatch()
   const onFinish = async(loginData)=>{
     try {
     
-      const response=await Url.post("/login",loginData)
-      
-      if(response.data.success){
-        console.log(response.data,'looginDatra');
-        
+      const response = await Url.post("/login", loginData)
+      console.log(response.data,'adminDATA');
+      if (response.data.admin) {
         toast.success(response.data.message)
-        toast("Redrection to Home page")
+        dispatch({type:"ADMIN_LOGIN" , payload:response.data});
+  
+        Cookie.set("adminData",JSON.stringify(response.data))
        
-        dispatch({type:"LOGIN" , payload:response.data});
-
-        Cookie.set("userData",JSON.stringify(response.data))
-       
-        navigate('/')
-      }else{
-        toast.error(response.data.message)
-        navigate('/login')
+        navigate('/admin')
+      } else {
+        if(response.data.success){
+          console.log(response.data,'looginDatra');
+          
+          toast.success(response.data.message)
+          toast("Redrection to Home page")
+         
+          dispatch({type:"LOGIN" , payload:response.data});
+  
+          Cookie.set("userData",JSON.stringify(response.data))
+         
+          navigate('/')
+        }else {
+          toast.error(response.data.message)
+          navigate('/login')
+          
+        }
         
       }
+      
+      
+      
     } catch (error) {
       
     }

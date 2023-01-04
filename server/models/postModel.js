@@ -16,6 +16,10 @@ const postSchema = new mongoos.Schema(
       type: String,
       
     },
+    block: {
+      type: Boolean,
+      default:false
+    },
     likes: {
         type: Array,
         

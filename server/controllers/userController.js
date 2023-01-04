@@ -9,6 +9,7 @@ const { default: mongoose } = require("mongoose");
 module.exports = {
   signup: async (req, res, next) => {
     try {
+      console.log(req.body,'uvais');
       const userExist = await User.findOne({ email: req.body.email });
 
       if (userExist) {
@@ -17,6 +18,7 @@ module.exports = {
           .json({ message: "user Alredy Existed", success: false });
       } else {
         userHelpers.doSMS(req.body).then((response) => {
+          console.log(response,'sma');
           if (response.smsError) {
             res.status(401).json({ message: "not", success: false });
           } else {
@@ -62,7 +64,10 @@ module.exports = {
     } catch (error) {}
   },
   login: async (req, res, next) => {
+
+   
     const user = await User.findOne({ email: req.body.email });
+   
     if (!user) {
       return res
         .status(200)
@@ -75,28 +80,34 @@ module.exports = {
         .json({ message: "Password is incorrect", success: false });
     } else {
       const user = await User.findOne({ email: req.body.email });
+      if (user.block) {
+       res.status(201).json({message:'User Account Blocked',Blocke:true})
+      } else {
+        
+        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+          expiresIn: "1d",
+        });
+        res.status(200).json({
+          message: "Login Successfull",
+          success: true,
+          id: user._id,
+          user_name:user.user_name,
+          mobile:user.mobile,
+          email:user.email,
+          name: user.name,
+          admin:user.admin,
+          token: token,
+          profile_pic: user.profile_pic,
+          DOB:user.DOB,
+          from:user.from,
+          lives:user.lives,
+          university:user.university,
+          followers:user.followers,
+          following:user.following,
+          profileImage: user.profileImage,
+        });
+     }
 
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-        expiresIn: "1d",
-      });
-      res.status(200).json({
-        message: "Login Successfull",
-        success: true,
-        id: user._id,
-        user_name:user.user_name,
-        mobile:user.mobile,
-        email:user.email,
-        name: user.name,
-        token: token,
-        profile_pic: user.profile_pic,
-        DOB:user.DOB,
-        from:user.from,
-        lives:user.lives,
-        university:user.university,
-        followers:user.followers,
-        following:user.following,
-        profileImage:user.profileImage
-      });
     }
   },
   userInfo: async (req, res, next) => {
@@ -135,9 +146,9 @@ module.exports = {
        const userId = req.params.id;
        const user=await User.findOne({_id:userId})
 
-       const friendsPost = await UserPost.find({userId:user.following}).populate('userId' ,'user_name profileImage')
+       const friendsPost = await UserPost.find({userId:user.following,block:false}).populate('userId' ,'user_name profileImage')
        .sort({createdAt:-1});
-       const currentUserPost = await UserPost.find({userId:userId}).populate('userId' ,'user_name profileImage')
+       const currentUserPost = await UserPost.find({userId:userId,block:false}).populate('userId' ,'user_name profileImage')
        .sort({createdAt:-1});
 
        const timeLinePost = friendsPost.concat(currentUserPost)

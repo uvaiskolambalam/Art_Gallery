@@ -1,7 +1,7 @@
 import React from "react";
 import "./GroupBox.css";
 import icon from "../../Assets/Profile img.svg";
-import Url from '../Instence/Base_uel'
+
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";

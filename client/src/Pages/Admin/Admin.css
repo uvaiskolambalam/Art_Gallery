@@ -1,0 +1,41 @@
+.AdminHome{
+    display: flex;
+ width: 100%;
+
+}
+/* .AdminHomeMenu{
+    margin-top: 90px;
+}
+.AdminHomeUser{
+    width: 100%;
+    
+} */
+.AdminHomeMenu-content{
+  
+    margin-top: 90px;
+   width: 100%;
+   display: grid;
+   grid-template-columns: 20% 67%;
+    gap: 3rem;
+    margin-left: 10px;
+
+}
+.AdminHomeUser span{
+    font-size: 25px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    box-shadow: var(--shadow);
+    background-color: white;
+    padding: 5px;
+    width: 20%;
+    border-radius: 10px;
+}
+.AdminHomeUser{
+    /* max-height: 80vh;
+    overflow: scroll; */
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.AdminHomeDetails{
+    display: flex;
+}

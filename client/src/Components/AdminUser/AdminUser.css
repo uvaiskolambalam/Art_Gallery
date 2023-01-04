@@ -1,0 +1,49 @@
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+ .AdminUser{
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    gap: 1rem;
+    /* border: 1px solid ; */
+    border-radius: 10px;
+    /* padding:2rem ; */
+    box-shadow: var(--shadow);
+    background-color: white;
+    max-height: 80vh;
+    overflow: scroll;
+    
+ }
+ .AdminUser::-webkit-scrollbar{
+    display: none;
+}
+.tableHead {
+      box-shadow: var(--shadow);
+      background-color: white;
+    
+  }
+  .userblock-btn{
+    background: linear-gradient(to right, darkblue, darkorchid) border-box;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+  }
+  .userblock-btn:hover{
+    cursor: pointer;
+  }
+  .userblock-btn img{
+    width: 20px;
+  }
+  .blockButtonContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

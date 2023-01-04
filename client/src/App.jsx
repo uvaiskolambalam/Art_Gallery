@@ -10,8 +10,11 @@ import Signup from "./Pages/Signup/Signup";
 import Profile from "./Pages/Profile/Profile";
 import EditProfile from "./Pages/EditProfile/EditProfile";
 import Friends from "./Pages/Friends/Friends";
-import AdminHome from "./Pages/AdminHome/AdminHome";
+import AdminHome from "./Pages/Admin/AdminHome";
 import Messenger from "./Pages/Messenger/Messenger";
+import AdminRoute from "./routes/AdminRoute";
+import AdminUsers from "./Pages/Admin/AdminUsers";
+import AdminPosts from "./Pages/Admin/AdminPosts";
 
 function App() {
   return (
@@ -25,18 +28,22 @@ function App() {
 
           <Route element={<PublicRoute/>}>
             <Route path='/login' element={<Login/>}/>
-            <Route path='/signup' element={<Signup/>}/>
+            <Route path='/signup' element={<Signup />} />
           </Route>
 
           <Route element={<ProtectedRoute/>}>
                 <Route path='/' element={<Home/>} exact/>
-                <Route path='/admin' element= {<AdminHome/>} exact />
                 <Route path='/profile' element={<Profile/>} exact/>
                 <Route path='/profile/:userID' element={<Profile/>} exact/>
                 <Route path='/friends' element={<Friends/>} exact/>
                 <Route path='/editProfile' element={<EditProfile/>} exact/>
                 <Route path='/messenger' element={ <Messenger/> } exact/>
-
+          </Route>
+          <Route element={<AdminRoute />}>
+                <Route path='/admin' element={ <AdminHome/> } exact/>
+                <Route path='/admin/users' element={ <AdminUsers/> } exact/>
+                <Route path='/admin/posts' element={ <AdminPosts/> } exact/>
+            
           </Route>
           {/* <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>}/>
           <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>

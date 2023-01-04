@@ -7,10 +7,20 @@ import NotificationIcon from '../../Assets/notification.svg'
 import SettingsIcon from '../../Assets/settings.svg'
 import LogoutIcon from '../../Assets/logout.svg'
 import profile from '../../Assets/person.svg'
-import { Link, NavLink } from "react-router-dom";
-
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import Cookies from "js-cookie";
 
 const MenuBox = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const logout = () => {
+    Cookies.set("userData", "");
+    dispatch({
+      type: "LOGOUT",
+    });
+    navigate("/login");
+  };
   return (
     <div className='MenuBox'>
         <NavLink to='/'>
@@ -48,7 +58,7 @@ const MenuBox = () => {
           <img src={SettingsIcon} alt="" />
           <p>Settings</p>
         </div>
-        <div className='MenuBox-item'>
+        <div className='MenuBox-item' onClick={logout}>
           <img src={LogoutIcon} alt="" />
           <p>Logout</p>
         </div>

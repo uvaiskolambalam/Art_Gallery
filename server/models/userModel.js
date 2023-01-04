@@ -43,6 +43,13 @@ const userSchema = new mongoos.Schema(
     },
     profileImage:{
       type:String
+    },
+    admin: {
+      type:Boolean
+    },
+    block: {
+      type: Boolean,
+      default:false
     }
   },
   {

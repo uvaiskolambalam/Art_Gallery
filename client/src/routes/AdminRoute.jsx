@@ -4,19 +4,19 @@ import Login from "../Pages/Login/Login";
 import Url from '../Components/Instence/Base_uel'
 
 
-export default function ProtectedRoute(){
+export default function AdminRoute(){
     const dispatch=useDispatch()
-    const { user } = useSelector((state) => ({ ...state }))
-    
+    const {admin} = useSelector ((state)=>({...state}))
    
     
         
         //getUserData()
     
-    console.log(user, 'userData');
+    console.log(admin, 'adminData');
+ 
 
    
         
-        return user ? <Outlet/> : <Navigate to= '/login'/>
+        return admin ? <Outlet/> : <Navigate to= '/login'/>
    
 }

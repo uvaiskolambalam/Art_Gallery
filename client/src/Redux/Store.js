@@ -2,7 +2,8 @@
 import {combineReducers} from 'redux'
 import { alertsSlice } from './AlertSlice'
 import { userSlice } from './UserSlice'
-import {PostSlice} from './PostSlice'
+import { PostSlice } from './PostSlice'
+import {adiminSlice} from './adminSlice'
 import {userAllDetails} from './UserAllDetails'
 
 
@@ -11,7 +12,8 @@ const rootReducer=combineReducers({
     // user:userSlice.reducer
     user:userSlice,
     post:PostSlice,
-    userAllDetails:userAllDetails
+    userAllDetails: userAllDetails,
+    admin:adiminSlice
 
 })
 export default rootReducer
