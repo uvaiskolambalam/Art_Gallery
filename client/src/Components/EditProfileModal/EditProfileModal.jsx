@@ -6,25 +6,16 @@ import {
   Form,
   Input,
   Modal,
-  Label,
-  Upload,
-  message,
-  Icon,
-  Image,
 } from "antd";
-const EditProfileModal = ({handleEdit}) => {
+const EditProfileModal = ({ handleEdit }) => {
   const [form] = Form.useForm();
-  const [edit , setEdit] = useState({})
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
   };
-  const handleOk = () => {
-    setIsModalOpen(false);
-    
-  };
+  
   const handleCancel = () => {
-   
+
     setIsModalOpen(false);
   };
   return (
@@ -40,18 +31,16 @@ const EditProfileModal = ({handleEdit}) => {
       <Modal
         title="Basic Modal"
         open={isModalOpen}
-        onOk={()=>{
-            form.validateFields()
-            .then((values)=>{
+        onOk={() => {
+          form.validateFields()
+            .then((values) => {
               form.resetFields()
-              console.log(values,'vaaaaaaaaa')
-              //setEdit(values)
               handleEdit(values)
               handleCancel()
-              
-              
+
+
             })
-          }}
+        }}
         onCancel={handleCancel}
       >
         <Form form={form}>

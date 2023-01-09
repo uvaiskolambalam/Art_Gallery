@@ -18,3 +18,8 @@
         display: none;
     }
 }
+.about-content p{
+    font-size: 12px;
+    line-height: 20px;
+    
+}

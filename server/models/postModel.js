@@ -23,7 +23,11 @@ const postSchema = new mongoos.Schema(
     likes: {
         type: Array,
         
-      },
+    },
+    reports: {
+      type: Array,
+      ref:'users'
+    },
     comments: [
         {
             userId:String,

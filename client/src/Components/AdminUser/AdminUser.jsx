@@ -1,15 +1,12 @@
 import React from "react";
 import "./AdminUser.css";
 import Url from "../Instence/Base_uel";
-import { useEffect } from "react";
 import blokedUserIcon from "../../Assets/bloked.png";
 import nonBlokedUserIcon from "../../Assets/nonBlock.png";
 
 const AdminUser = ({ users, getUsers }) => {
-  // console.log(userId,'userId...........');
   const updateBlock = async (userId) => {
-    const response = await Url.patch("/admin/updateBlock", { userId });
-    console.log('respo=>',response.data);
+    await Url.patch("/admin/updateBlock", { userId });
     getUsers();
   };
 
@@ -24,11 +21,11 @@ const AdminUser = ({ users, getUsers }) => {
           <th>Action</th>
         </tr>
         {users.map((item, key) => (
-          <tr>
-            <td>1</td>
+          <tr key={key}>
+            <td>{ key+1}</td>
             <td>{item.name}</td>
             <td>{item.email}</td>
-            <td>{item.block ? "Bloked" : "Audinary"}</td>
+            <td>{item.block ? "Bloked" : "Ordinary"}</td>
             <td className="blockButtonContainer">
               <button
                 className="userblock-btn"

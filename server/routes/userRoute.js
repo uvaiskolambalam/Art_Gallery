@@ -21,7 +21,10 @@ router.put('/editAbout',userController.editAbout)
 router.get('/getUserDetails/:id',userController.getUserDetails)
 router.put('/editMoreData',userController.editMoreData)
 router.post('/profileImage',userController.profileImage)
-router.post('/getProfilePic',userController.getProfilePic)
+router.post('/getProfilePic', userController.getProfilePic)
+router.patch('/savePost/:id', userController.savePost)
+router.get('/getSavedPosts/:id', userController.getSavedPosts)
+router.patch('/reportPosts/:id',userController.reportPost)
 
 
 module.exports = router;

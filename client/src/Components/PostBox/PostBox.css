@@ -201,3 +201,30 @@
     }
 } */
 
+.dots-container{
+    position: relative;
+}
+.dots-container img{
+    cursor: pointer;
+}
+.dots-contents{
+    position: absolute;
+    box-shadow: var(--shadow);
+    right: 6px;
+    /* padding: 12px; */
+    line-height: 1.5rem;
+    background-color: white;
+    border-radius: 10px;
+    width: 15rem;
+}
+.list{
+    display: flex;
+    gap: 1rem;
+    border-radius: 10px;
+    padding: 12px;
+}
+.list:hover{
+    cursor: pointer;
+    background: rgba(3, 50, 88, 0.2);
+    
+}

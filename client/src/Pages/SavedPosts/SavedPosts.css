@@ -1,0 +1,4 @@
+.savedPost{
+    max-height: 85vh;
+    overflow: scroll;
+}

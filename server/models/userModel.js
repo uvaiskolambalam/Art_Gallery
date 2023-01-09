@@ -50,6 +50,9 @@ const userSchema = new mongoos.Schema(
     block: {
       type: Boolean,
       default:false
+    },
+    savedPosts:{
+      type:Array
     }
   },
   {

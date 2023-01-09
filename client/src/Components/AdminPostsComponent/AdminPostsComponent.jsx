@@ -1,12 +1,11 @@
 import React from "react";
-import nonBlokedUserIcon from "../../Assets/nonBlock.png";
-import blokedUserIcon from "../../Assets/bloked.png";
+import './AdminPostsComponent.css'
 import Url from "../Instence/Base_uel";
 const AdminPosts = ({ posts, getPosts }) => {
   const postBlock = async (postId) => {
     console.log(postId, "postId");
     try {
-      const response = await Url.patch("/admin/blockPost", { postId });
+       await Url.patch("/admin/blockPost", { postId });
       getPosts();
     } catch (error) {
       console.log(error);
@@ -24,8 +23,8 @@ const AdminPosts = ({ posts, getPosts }) => {
           <th>Action</th>
         </tr>
         {posts.map((item, key) => (
-          <tr>
-            <td>1</td>
+          <tr key={key}>
+            <td>{ key+1}</td >
             <td>{item.userId.user_name}</td>
             <td>{item.userId.email}</td>
             <td>{item.updatedAt}</td>

@@ -1,7 +1,5 @@
 import React from 'react'
 import LeftAbout from '../About/LeftAbout'
-
-import GroupBox from '../GroupBox/GroupBox'
 import MenuBox from '../MenuBox/MenuBox'
 import './LeftSide.css'
 

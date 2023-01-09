@@ -1,5 +1,6 @@
 import React from 'react'
 import Logo from '../../Assets/logo-with-name.png'
+import admin from '../../Assets/one-4.jpg'
 import './AdminNavBar.css'
 const AdminNavBar = () => {
   return (
@@ -8,7 +9,7 @@ const AdminNavBar = () => {
               <img src={Logo} alt="" />
           </div>
           <div className="adminProfile">
-              <img src='' alt="" />
+              <img src={admin} alt="" />
           </div>
           
     </div>

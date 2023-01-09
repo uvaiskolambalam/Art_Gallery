@@ -1,0 +1,28 @@
+.postImage{
+    width: 5rem;
+}
+.blockButton button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    width: 5.5rem;
+    padding: .5rem 1.5rem .5rem 1.5rem;
+    border-radius: 10px;
+   background-color: #e2e2e4;
+    color: rgb(0, 0, 0);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    font-weight: 600;
+}
+.rep-profileImage img{
+    width: 2rem;
+    border-radius: 30px;
+}
+.rep-profileImage{
+   
+    background-color: rgb(252, 252, 252);
+    box-shadow: var(--shadow);
+   padding: 2rem;
+    
+}

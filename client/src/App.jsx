@@ -15,6 +15,8 @@ import Messenger from "./Pages/Messenger/Messenger";
 import AdminRoute from "./routes/AdminRoute";
 import AdminUsers from "./Pages/Admin/AdminUsers";
 import AdminPosts from "./Pages/Admin/AdminPosts";
+import SavedPosts from "./Pages/SavedPosts/SavedPosts";
+import AdminReports from "./Pages/Admin/AdminReports";
 
 function App() {
   return (
@@ -38,18 +40,16 @@ function App() {
                 <Route path='/friends' element={<Friends/>} exact/>
                 <Route path='/editProfile' element={<EditProfile/>} exact/>
                 <Route path='/messenger' element={ <Messenger/> } exact/>
+                <Route path='/savedPosts' element={ <SavedPosts/> } exact/>
           </Route>
           <Route element={<AdminRoute />}>
                 <Route path='/admin' element={ <AdminHome/> } exact/>
                 <Route path='/admin/users' element={ <AdminUsers/> } exact/>
                 <Route path='/admin/posts' element={ <AdminPosts/> } exact/>
+                <Route path='/admin/reports' element={ <AdminReports/> } exact/>
             
           </Route>
-          {/* <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>}/>
-          <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
-          <Route path="/editProfile" element={<ProtectedRoute><EditProfile/></ProtectedRoute>}/>
-          <Route path="/friends" element={<ProtectedRoute><Friends/></ProtectedRoute>}/> */}
-
+         
           <Route path="/otp" element={<Otp/>}/>
         </Routes>
       </BrowserRouter>

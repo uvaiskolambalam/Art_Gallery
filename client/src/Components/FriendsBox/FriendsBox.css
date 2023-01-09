@@ -1,4 +1,4 @@
-.FriendsBox{
+.FriendsBox {
     display: flex;
     flex-direction: column;
     gap: .5rem;
@@ -7,38 +7,44 @@
     padding: 5px;
     box-shadow: var(--shadow);
 }
-.FriendsBox-Profile{
+
+.FriendsBox-Profile {
     width: 1.5rem;
     height: 1.5rem;
-   background: linear-gradient(to right, darkblue, darkorchid) border-box;
-  border-radius: 50%;
-  border: 4px solid transparent;
+    background: linear-gradient(to right, darkblue, darkorchid) border-box;
+    border-radius: 50%;
+    border: 4px solid transparent;
     overflow: hidden;
     display: flex;
-    
+
     align-items: center;
     justify-content: center;
 
 }
-.FriendsBox-container{
+
+.FriendsBox-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 5px;
-    
+
 }
-.FriendsBox-container:hover{
+
+.FriendsBox-container:hover {
     cursor: pointer;
 }
-#unFollow-btn{
+
+#unFollow-btn {
     width: 2rem;
     border-radius: 50%;
 }
-#unFollow-btn:hover{
+
+#unFollow-btn:hover {
     transform: scale(1.2);
     cursor: pointer;
 
 }
-.unFollow-icon{
+
+.unFollow-icon {
     width: 1.4rem;
 }

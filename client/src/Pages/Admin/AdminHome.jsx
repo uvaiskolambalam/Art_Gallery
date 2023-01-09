@@ -7,21 +7,21 @@ import { useState } from 'react'
 import Url from '../../Components/Instence/Base_uel'
 
 const AdminHome = () => {
-  const [posts,setPosts]=useState(0)
-  const [users,setUsers]=useState(0)
+  const [posts, setPosts] = useState(0)
+  const [users, setUsers] = useState(0)
   const getPosts = async () => {
     try {
-        const response = await Url.get('/admin/getAllPosts')
-        setPosts(response.data.length)
-        console.log(response.data,'poset');
-        
+      const response = await Url.get('/admin/getAllPosts')
+      setPosts(response.data.length)
+
+
     } catch (error) {
-        console.log(error);
+      console.log(error);
     }
   }
   const getUsers = async () => {
     try {
-      console.log('getuser=>');
+
       const response = await Url.get("/admin/getAllUsers");
       setUsers(response.data.length);
     } catch (error) {
@@ -32,27 +32,27 @@ const AdminHome = () => {
 
     getPosts()
     getUsers()
-    
-  },[])
+
+  }, [])
   return (
     <div className="AdminHome">
-    <div className="AdminHomeNavBar">
-      <AdminNavBar />
-    </div>
-    <div className="AdminHomeMenu-content">
-      <div className="AdminHomeMenu">
-        <AdminMenu />
+      <div className="AdminHomeNavBar">
+        <AdminNavBar />
       </div>
-      <div className="AdminHomeUser">
-        <span>ADMIN /HOME</span>
+      <div className="AdminHomeMenu-content">
+        <div className="AdminHomeMenu">
+          <AdminMenu home />
+        </div>
+        <div className="AdminHomeUser">
+
           <div className='AdminHomeDetails'>
             <AdminHomee posts={posts} users={users} />
-          
+
+          </div>
         </div>
+
       </div>
-      
     </div>
-  </div>
   )
 }
 

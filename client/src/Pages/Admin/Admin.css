@@ -15,8 +15,8 @@
     margin-top: 90px;
    width: 100%;
    display: grid;
-   grid-template-columns: 20% 67%;
-    gap: 3rem;
+   grid-template-columns: 20% 75%;
+    gap: 1rem;
     margin-left: 10px;
 
 }
@@ -38,4 +38,10 @@
 }
 .AdminHomeDetails{
     display: flex;
+}
+@media screen and (max-width:1024px){
+    .AdminHomeMenu-content{
+        display: flex;
+        flex-direction: column;
+    }
 }

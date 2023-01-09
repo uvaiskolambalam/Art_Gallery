@@ -1,35 +1,20 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Form,
-  Input,
-  Modal,
-  Label,
-  Upload,
-  message,
-  Icon,
-  Image,
-} from "antd";
+import { Form, Modal, Upload, Image } from "antd";
 import ImgCrop from "antd-img-crop";
 import camera from "../../Assets/camera.png";
 import { useDispatch, useSelector } from "react-redux";
 import axiosImage from "../../Components/Instence/Instence";
-import { useEffect } from "react";
-import axios from "axios";
+
+import Url from "../Instence/Base_uel";
 
 const ProfileImageModal = ({ setUpload }) => {
   const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
-  const [confirmLoading, setConfirmLoading] = useState(false);
   const [fileList, setFileList] = useState("");
-  const [image, setImage] = useState(null);
-  const [profileImage, setProfileImage] = useState(" ");
 
-  // const [userData,setUserData]=useState('')
   const [form] = Form.useForm();
   const user = useSelector((state) => state.user);
-  
   const showModal = ({ renderImgage }) => {
     setOpen(true);
   };
@@ -50,17 +35,6 @@ const ProfileImageModal = ({ setUpload }) => {
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
   };
-  //   const onFinish = async(value) => {
-  //     setProfileImage(value.post_content)
-
-  //     let image=value.post_image.file
-  //     setImage(image)
-  //   };
-
-  // const newPost={
-  //   userId:user.id,
-  //   desc:profileImage
-  // }
 
   const toColoudinary = (fileList) => {
     if (fileList) {
@@ -80,21 +54,10 @@ const ProfileImageModal = ({ setUpload }) => {
           profileImage: profileImageUrl,
         };
 
-        const responsee = await axios.post(
-          "http://localhost:5000/profileImage",
-          profileImageData
-        );
+        const responsee = await Url.post("/profileImage", profileImageData);
         setUpload(responsee.data.success);
-        const aaaa = {...responsee.data.updated}
-        console.log(responsee.data.updated,'111111111');
-        dispatch({type:"USER" , payload:aaaa});
-        // dispatch({type:"LOGIN" , payload:responsee.data});
-        // const profilePicUpdate=responsee.data.editProfileImage.profileImage
-        // renderImage(profilePicUpdate)
-
-        setImage(null);
-        setProfileImage("");
-        //setRender(true)
+        const aaaa = { ...responsee.data.updated };
+        dispatch({ type: "USER", payload: aaaa });
       });
     } else {
     }
@@ -115,16 +78,10 @@ const ProfileImageModal = ({ setUpload }) => {
         open={open}
         onOk={() => {
           form.validateFields().then((values) => {
-            // form.resetFields()
-            // let image=values.post_image.file
-
-            // setImage(image)
-            setProfileImage(fileList);
             toColoudinary(fileList);
             handleCancel();
           });
         }}
-        setConfirmLoading={confirmLoading}
         onCancel={handleCancel}
       >
         <div>
@@ -138,11 +95,6 @@ const ProfileImageModal = ({ setUpload }) => {
                   <ImgCrop rotate>
                     <Upload
                       listType="picture-card"
-                      // beforeUpload={(file) => {
-                      //   console.log(file, "file");
-                      //   return false;
-                      // }}
-                      //showUploadList={true}
                       accept=".jpg, .jpeg,"
                       onPreview={onPreview}
                       onChange={onChange}
@@ -151,19 +103,8 @@ const ProfileImageModal = ({ setUpload }) => {
                     </Upload>
                   </ImgCrop>
                 </Form.Item>
-
-                {/* <Input
-                  
-                  className="modalInput"
-                  id="file"
-                  type="file"
-                  placeholder="Choose Image"
-                />
-                <img src={camera} alt="" />
-                <label htmlFor="file">Upload a Photo</label> */}
               </div>
             </div>
-            {/* <Button htmlType="submit">submit</Button> */}
           </Form>
         </div>
       </Modal>

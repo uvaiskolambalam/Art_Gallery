@@ -1,12 +1,12 @@
 td, th {
-    border: 1px solid #dddddd;
+    
     text-align: left;
     padding: 8px;
   }
  .AdminUser{
     display: flex;
     flex-direction: column;
-    width: 95%;
+    width: 100%;
     gap: 1rem;
     /* border: 1px solid ; */
     border-radius: 10px;

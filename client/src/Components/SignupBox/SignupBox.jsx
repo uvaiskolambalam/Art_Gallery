@@ -1,24 +1,19 @@
 import React from "react";
 import "./SignupBox.css";
 import { Form, Input, Button } from "antd";
-import { useDispatch } from "react-redux";
-import { createSearchParams, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
 import toast from 'react-hot-toast'
+import Url from '../Instence/Base_uel'
 
 
 const SignupBox = () => {
-  const [state,setState]=useState({})
   const navigate=useNavigate()
-  // const dispatch=useDispatch()
-  const [error,setError]=useState()
   const onFinish =  async (value) => {
     
     try {
      
-      setState(value)
-      const response = await axios.post("http://localhost:5000/signup",value);
+      const response = await Url.post("/signup",value);
 
      
       if(response.data.success){

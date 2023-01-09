@@ -7,14 +7,12 @@ router.get('/getAllUsers', async (req, res) => {
         
         const users = await User.find({})
         res.status(200).json(users)
-       // console.log(users,'adminUsers');
     } catch (error) {
         
     }
 })
 router.get('/getAllPosts', async (req, res) => {
     try {
-        console.log("vannu");
         const posts = await UserPost.find().populate('userId' ,'user_name profileImage email block')
         .sort({createdAt:-1});
      
@@ -28,7 +26,6 @@ router.get('/getAllPosts', async (req, res) => {
 router.patch('/updateBlock', async(req, res) => {
     try {
         const user = await User.findOne({ _id: req.body.userId })
-        console.log(user,'before');
         user.block = !user.block
         await user.save()
         res.status(200).json({success:true})
@@ -37,17 +34,24 @@ router.patch('/updateBlock', async(req, res) => {
     }
 })
 router.patch('/blockPost', async(req, res) => {
-    console.log('hhhhh');
     try {
         const posts = await UserPost.findOne({ _id: req.body.postId })
-        console.log(posts,'before');
         posts.block = !posts.block
         await posts.save()
         res.status(200).json({success:true})
     } catch (error) {
         res.status(400).json({success:false})
-
+        
         console.log(error);
+    }
+})
+router.get('/getReports', async (req, res) => {
+    try {
+        const reportsPosts = await UserPost.find({ reports: { $exists: true } }).populate('reports', 'user_name profileImage email ').populate('userId', 'user_name profileImage email ')
+        res.status(200).json(reportsPosts)
+    } catch (error) {
+        res.status(400).json({success:false})
+        
     }
 })
 
