@@ -13,35 +13,30 @@ import Url from '../Instence/Base_uel'
 import { useNavigate } from "react-router-dom";
 
 
-const FriendsBox = ({user_name,followers,followsId,updateFollow,setRender,render,profileImage}) => {
-  const  user  = useSelector((state) => state.user);
-  const [follow,setFollow]=useState(followers)
-  console.log(followsId,'ramees');
-const navigate=useNavigate()
+const FriendsBox = ({ user_name, followers, followsId, updateFollow, profileImage }) => {
+  const user = useSelector((state) => state.user);
+  const [follow, setFollow] = useState(followers)
+  const navigate = useNavigate()
 
-  
-  const handleFollow=async(followId)=>{
-    const followData={
-      userId:user.id,
-      followId:followId
+
+  const handleFollow = async (followId) => {
+    const followData = {
+      userId: user.id,
+      followId: followId
     }
     updateFollow(followData)
-   
-   
+
+
     setFollow(!follow)
-    
+
 
   }
-  const getUserDetails=async()=>{
-  //   console.log('koooiu');
-  //  const response= await Url.get(`/getUserDetails/${followsId}`)
-  //  console.log(response.data,'poda patti');
-  //  const id=response.data.id
-   navigate(`/profile/${followsId}`,)
-    
+  const getUserDetails = async () => {
+    navigate(`/profile/${followsId}`,)
+
 
   }
- 
+
   return (
     <div className="FriendsBox" >
       <div className="FriendsBox-container" >
@@ -51,7 +46,7 @@ const navigate=useNavigate()
         <div onClick={getUserDetails}>
           <p>{user_name}</p>
         </div>
-      <button className="button-general" id="unFollow-btn" onClick={()=>handleFollow(followsId)}> <img className="unFollow-icon" src={unFollowIcon} alt="" /> </button>
+        <button className="button-general" id="unFollow-btn" onClick={() => handleFollow(followsId)}> <img className="unFollow-icon" src={unFollowIcon} alt="" /> </button>
       </div>
     </div>
   );

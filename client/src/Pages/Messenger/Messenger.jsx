@@ -1,12 +1,10 @@
 import React, { useRef, useState } from 'react'
 import Conversation from '../../Components/Conversation/Conversation'
-import FriendsPage from '../../Components/FriendsPage/FriendsPage'
 import Message from '../../Components/Message/Message'
 import NavBar from '../../Components/NavBar/NavBar'
 import './Messenger.css'
 import Send from "../../Assets/send.svg";
 import ChatOnline from '../../Components/ChatOnline/ChatOnline'
-import { useContext } from 'react'
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import Url from '../../Components/Instence/Base_uel'
@@ -20,13 +18,10 @@ const Messenger = () => {
     const [arrivalMessage,setArrivalNewMessage]=useState(null)
     const [onlineUsers,setOnlineUsers]=useState([])
     const [friends, setFriends] = useState([]);
-    const [conversationUser,setConversationUser]=useState(null)
     
     const user = useSelector((state) => state.user);
     const userId=user.id
-    const userImage = useSelector((state) => state.userAllDetails);
 
-    console.log(user,'user');
     const scrollRef = useRef()
     const socket=useRef()
 
@@ -34,7 +29,6 @@ const Messenger = () => {
         const getFriends = async () => {
             try {
               const res = await Url.post('/getFriends',{userId});
-               console.log(res.data,'online user');
               setFriends(res.data.friends);
             } catch (error) {
               console.log(error);
@@ -124,14 +118,11 @@ const Messenger = () => {
     },[messages])
 
     const getToConversation=async(conversationUser)=>{
-        //console.log(conversationUser,'convvvvvv');
         const data={
             senderId:userId,
             receiverId:conversationUser._id
         }
-        const res=await Url.post('/conversations',{data})
-        //setConversationUser(conversationUser)
-        //console.log(conversationUser,'nagas');
+        await Url.post('/conversations',{data})
     }
     
   return (
@@ -145,9 +136,9 @@ const Messenger = () => {
             <div className="chatMenuWrapper">
                 <input type="text" placeholder='search for friends' className='chatMenuInput' />
                 {conversation.map(c=>(
-                    <div onClick={()=>setCurrentChat(c)}>
+                    <div className='conversation-container' onClick={()=>setCurrentChat(c)}>
 
-                        <Conversation conversation={c} currentUser={user} conversationUser={conversationUser}/>
+                        <Conversation conversation={c} currentUser={user} />
                     </div>
                 ))}
             </div>

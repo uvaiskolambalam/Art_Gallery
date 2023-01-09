@@ -7,15 +7,13 @@ import AdminPostss from '../../Components/AdminPostsComponent/AdminPostsComponen
 import Url from '../../Components/Instence/Base_uel'
 const AdminPosts = () => {
     const [posts, setPosts] = useState([])
-    useEffect(() => {
-        
-    })
+   
     
     const getPosts = async () => {
         try {
             const response = await Url.get('/admin/getAllPosts')
             setPosts(response.data)
-            console.log(response.data,'poset');
+            
             
         } catch (error) {
             console.log(error);
@@ -34,7 +32,7 @@ const AdminPosts = () => {
         <AdminMenu />
       </div>
       <div className="AdminHomeUser">
-        <span>ADMIN /POSTS</span>
+      
           <AdminPostss posts={posts} getPosts={getPosts} />
       </div>
       

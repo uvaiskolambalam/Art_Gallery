@@ -9,7 +9,7 @@ const LeftAbout = () => {
         <img src={logo} alt="" />
       </div>
       <div className="about-content">
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Facere, non.</p>
+        <p>Privacy . Terms . Advertising . Cookies . More . Art Gallery © 2023</p>
       </div>
 
     </div>

@@ -9,16 +9,14 @@ const { default: mongoose } = require("mongoose");
 module.exports = {
   signup: async (req, res, next) => {
     try {
-      console.log(req.body,'uvais');
       const userExist = await User.findOne({ email: req.body.email });
-
+      
       if (userExist) {
         return res
           .status(200)
           .json({ message: "user Alredy Existed", success: false });
       } else {
         userHelpers.doSMS(req.body).then((response) => {
-          console.log(response,'sma');
           if (response.smsError) {
             res.status(401).json({ message: "not", success: false });
           } else {
@@ -26,7 +24,9 @@ module.exports = {
           }
         });
       }
-    } catch (error) {}
+    } catch (error) {
+      res.status(500).json(error)
+    }
   },
   otp: async (req, res, next) => {
     try {
@@ -61,12 +61,13 @@ module.exports = {
             });
         }
       });
-    } catch (error) {}
+    } catch (error) {
+      res.ststus(500).json(error)
+    }
   },
   login: async (req, res, next) => {
-
-   
-    const user = await User.findOne({ email: req.body.email });
+    try {
+      const user = await User.findOne({ email: req.body.email });
    
     if (!user) {
       return res
@@ -109,6 +110,14 @@ module.exports = {
      }
 
     }
+      
+    } catch (error) {
+      res.ststus(500).json(error)
+      
+    }
+
+   
+    
   },
   userInfo: async (req, res, next) => {
     try {
@@ -138,7 +147,8 @@ module.exports = {
       const newPost = new UserPost(postData);
       await newPost.save();
     } catch (error) {
-      console.log(error);
+      res.status(500).json(error)
+
     }
   },
   getPosts: async (req, res, next) => {
@@ -152,42 +162,12 @@ module.exports = {
        .sort({createdAt:-1});
 
        const timeLinePost = friendsPost.concat(currentUserPost)
-       //const a=timeLinePost
-       console.log(timeLinePost, 'timeline');
-       res.status(200).json({timeLinePost});
-      // const followedUsers = await User.aggregate([
-      //   {
-      //     $match: {
-      //       _id: new mongoose.Types.ObjectId(userId),
-      //     },
-      //   },
-      //   {
-      //     $lookup: {
-      //       from: "posts",
-      //       localField: "following",
-      //       foreignField: "userId",
-      //       as: "followersPosts",
-      //     },
-      //   },
-      //   {
-      //     $project: {
-      //       followersPosts: 1,
-      //       _id: 0,
-      //     },
-      //   },
-       
-      // ]);
-
-      // const timeLinePost = currentUserPost
-      //   .concat(...followedUsers[0].followersPosts)
-      //   .sort((a, b) => {
-      //     return b.createdAt - a.createdAt;
-      //   });
-      //   console.log(timeLinePost,'timeLinePost');
-      
-
      
-    } catch (error) {}
+       res.status(200).json({timeLinePost});
+    
+    } catch (error) {
+      res.status(500).json(error)
+    }
   },
   handleLike: async (req, res, next) => {
     try {
@@ -251,10 +231,10 @@ module.exports = {
   },
   getUsers: async (req, res, next) => {
     try {
-      console.log(req.body,'userIddddd');
+     
       let userId=req.body.userId
       const allUsers = await User.find({followers:{$nin:userId}});
-      //console.log(allUsers,'alllll');
+   
       res.status(200).json({ success: true, users: allUsers });
     } catch (error) {}
   },
@@ -262,11 +242,11 @@ module.exports = {
     try {
       let userId=req.body.userId
       const friends = await User.find({followers:userId})
-     // res.json({friends:friends})
+   
       res.status(200).json({ success: true, friends: friends });
-     // console.log(friends);
+  
     } catch (error) {
-      
+      res.status(500).json(error)
     }
   },
   follow: async (req, res, next) => {
@@ -318,7 +298,7 @@ module.exports = {
   },
   editAbout:async(req,res,next)=>{
     try {
-      console.log(req.body);
+    
      
       const response=await User.updateOne({_id:req.body.userId},
         {
@@ -331,7 +311,7 @@ module.exports = {
         res.status(200).json({message:'edit success',success:true})
       
     } catch (error) {
-      
+      res.status(500).json(error)
     }
 
   },
@@ -339,7 +319,7 @@ module.exports = {
     try {
       const user=await User.findOne({_id:req.params.id})
       res.status(200).json(user)
-      console.log(user,'user');
+   
     } catch (error) {
       
     }
@@ -347,7 +327,7 @@ module.exports = {
   editMoreData:async (req,res,next)=>{
     try {
       
-      //console.log(req.body.DOB.getMonth(),'more dara');
+   
 
       const response= await User.updateOne({_id:req.body.userId},
         {
@@ -372,7 +352,7 @@ module.exports = {
             profileImage:req.body.profileImage
         }
         },{new:true})
-        console.log(response,'image url');
+     
        res.status(200).json({success:true,updated})
     } catch (error) {
       
@@ -380,11 +360,75 @@ module.exports = {
   },
   getProfilePic:async(req,res,next)=>{
     try {
-      console.log(req.body,'uvvu');
+ 
       const editProfileImage =await User.findOne({_id:req.body.userId})
-      console.log(editProfileImage,'poda patti');
+ 
       res.status(200).json({message:'profile Photo updated successfully',success:true,editProfileImage})
     } catch (error) {
+      res.status(500).json(error)
+      
+    }
+  },
+  savePost: async (req, res, next) => {
+    try {
+      let postId = req.params.id
+      let userId = req.body.currentUserId
+
+      const user = await User.findById(userId)
+      const userSave = user.savedPosts.includes(postId)
+     
+      if (userSave) {
+       await User.findByIdAndUpdate(userId, {
+       
+          $pull: {
+            savedPosts:postId
+          }
+        
+        })
+        res.status(200).json({message:"Post Unsaved"})
+        
+      } else {
+        
+       await User.findByIdAndUpdate(userId, {
+          
+          $push: {
+            savedPosts:postId
+          }
+          
+        })
+        res.status(200).json({message:"Post saved"})
+      }
+    } catch (error) {
+      res.status(500).json(error)
+      
+    }
+  },
+  getSavedPosts: async (req, res, next) => {
+    try {
+      const userId=req.params.id
+      const user=await User.findOne({_id:userId})
+      const savedPosts = await UserPost.find({_id:user.savedPosts}).populate('userId' ,'user_name profileImage')
+      .sort({createdAt:-1});
+      
+      
+    
+      res.status(200).json(savedPosts)
+    } catch (error) {
+      
+      res.status(500).json(error)
+    }
+  },
+  reportPost: async (req, res, next) => {
+    try {
+      const postId = req.params.id
+      const userId = req.body.currentUserId
+      const reportPost = await UserPost.findByIdAndUpdate(postId, {
+        $push: {
+          reports:userId
+        }
+      })
+    } catch (error) {
+      res.status(500).json(error)
       
     }
   }

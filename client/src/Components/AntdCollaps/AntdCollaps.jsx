@@ -1,17 +1,9 @@
 import React from 'react';
 import { Collapse } from 'antd';
-import { useState } from 'react';
 import { useSelector } from 'react-redux';
 const { Panel } = Collapse;
-const text = `
-A dog is a type of domesticated animal.
-Known for its loyalty and faithfulness,
-it can be found as a welcome guest in many households across the world.
-`;
 const AntdCollaps = ({tempUser}) => {
   const user = useSelector((state) => state.user);
-  console.log(user,'deeeeeeeeeeeeeeeeeealksdjflsdfj');
-const [overView,setOverView]=useState([])
   return(
     <div>
         <Collapse accordion>
@@ -30,7 +22,7 @@ const [overView,setOverView]=useState([])
       <p> From: {tempUser ? tempUser.from : user.from}</p>
     </Panel>
     <Panel header="Family and relatiosip" key="4">
-      <p>{text}</p>
+      <p>I am a art_Gallery User</p>
     </Panel>
   </Collapse>
     </div>

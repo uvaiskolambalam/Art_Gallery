@@ -8,10 +8,8 @@ import { useEffect } from "react";
 
 const AdminUsers = () => {
   const [users, setUsers] = useState([]);
-  const [blockUserId, setBlockUserId] = useState("");
   const getUsers = async () => {
     try {
-      console.log('getuser=>');
       const response = await Url.get("/admin/getAllUsers");
       setUsers(response.data);
     } catch (error) {
@@ -33,7 +31,7 @@ const AdminUsers = () => {
           <AdminMenu />
         </div>
         <div className="AdminHomeUser">
-          <span>ADMIN /USERS</span>
+
           <AdminUser users={users} getUsers={getUsers} />
         </div>
       </div>

@@ -1,21 +1,21 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./PostBox.css";
-import PostImageOne from "../../Assets/imageOne.jpg";
-import PostImageTwo from "../../Assets/imagetwo.jpg";
 import profile from "../../Assets/Profile img.svg";
 import heart from "../../Assets/heart.svg";
 import Chat from "../../Assets/chat-dots.svg";
 import Share from "../../Assets/share-fill.svg";
 import Send from "../../Assets/send.svg";
 import dots from "../../Assets/three-dots.svg";
-import { useEffect } from "react";
-import axios from "axios";
+import SaveIcon from '../../Assets/save.svg'
+import ReportIcon from '../../Assets/report.svg'
 import Url from "../Instence/Base_uel";
 import heartFill from "../../Assets/heart-fill.png";
 import { useState } from "react";
 import Moment from "react-moment";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import useOnClickOutside from '../../Helpers/useClickOutside'
+import toast from 'react-hot-toast'
 
 const PostBox = ({
   image,
@@ -36,21 +36,28 @@ const PostBox = ({
   const [like, setLike] = useState(liked);
   const [chatIcon, setChatIcon] = useState(false);
   const [comment, setComment] = useState("");
-  const navigate=useNavigate()
+  const navigate = useNavigate()
+  const [postDots, setPostDots] = useState(false)
+  const currentUser = useSelector((state) => state.user);
+  const [savedPost, setSavedPost] = useState(false)
+  const currentUserId = currentUser.id
+  const menu = useRef(null);
+  useOnClickOutside(menu, () => setPostDots(false));
 
   const handleLike = async () => {
     const likeData = {
       userId: userId,
       postId: id,
     };
-
     updateLike(likeData);
     setLike(!like);
   };
 
+
   const commentInput = async (e) => {
     setComment(e.target.value);
   };
+
 
   const sentComent = async () => {
     const commentData = {
@@ -58,16 +65,31 @@ const PostBox = ({
       userId: userId,
       comment: comment,
     };
-
     updateComment(commentData);
     setComment("");
-
-    //setComment(response.data)
   };
-  const getUserDetails= async()=>{
+
+
+  const getUserDetails = async () => {
     navigate(`/profile/${postmanId}`,)
   }
- 
+
+
+  const handlePost = () => {
+    setPostDots(!postDots)
+
+
+  }
+  
+  const reportPost = async () => {
+    await Url.patch(`/reportPosts/${id}`, { currentUserId })
+
+  }
+  const savePost = async () => {
+    const response = await Url.patch(`/savePost/${id}`, { currentUserId })
+    setSavedPost(!savedPost)
+    toast.success(response.data.message)
+  }
 
   return (
     <>
@@ -77,9 +99,6 @@ const PostBox = ({
             <div className="postman-Profile-Pic">
               <img src={photo ? photo : profile} alt="" onClick={getUserDetails} />
             </div>
-            {/* <div className="postman-defult-Profile-Pic">
-              <img src={photo ? photo : profile} alt="" />
-            </div> */}
             <div className="post-box-postman-name-date">
               <p>{name}</p>
               <Moment fromNow interval={30}>
@@ -87,9 +106,26 @@ const PostBox = ({
               </Moment>
             </div>
           </div>
-          <div>
+          <div onClick={handlePost} className='dots-container' ref={menu}>
             <img src={dots} alt="" />
-            
+            {postDots ?
+              <div className="dots-contents">
+
+                <div className="list" onClick={savePost}>
+                  <img src={SaveIcon} alt="" />
+                  <p>{savedPost ? "Save Post" : "Unsave Post"}</p>
+                </div>
+
+
+                <div className="list" onClick={reportPost}>
+                  <img src={ReportIcon} alt="" />
+                  <p>Report</p>
+                </div>
+              </div>
+              :
+              ""
+            }
+
           </div>
         </div>
         {/* =========================== */}

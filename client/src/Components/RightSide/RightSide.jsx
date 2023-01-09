@@ -17,16 +17,13 @@ const RightSide = () => {
   const userId = user.id;
   const getFriends = async () => {
     const response = await Url.post("/getFriends", { userId });
-    console.log(response.data, "friends data");
     setFriends(response.data.friends);
     // getUsers();
   };
   const updateFollow = async (followData) => {
     getFriends();
     getUsers();
-    console.log("firest");
     const response = await Url.post("/follow", followData);
-    console.log(render, "seci=nse");
     setRender(!render);
   };
   const getUsers = async () => {
@@ -39,7 +36,6 @@ const RightSide = () => {
   }
 
   useEffect(() => {
-    console.log(render, "rneee");
     updateFollow();
     getFriends();
     getUsers();
@@ -69,7 +65,6 @@ const RightSide = () => {
         <p>People You may know</p>
         <p onClick={seeAll}>see all...</p>
       </div>
-      {/* <span className="leftSide-groupHeading">People You may know</span> */}
       <div className="rightSide-group">
         {users.map((item, i) => (
           <GroupBox

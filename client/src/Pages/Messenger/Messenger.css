@@ -7,6 +7,33 @@
     display: flex;
     margin-top:90px ;
 }
+@media screen and (max-width:1024px){
+   /* .chatMenu{
+    display: flex;
+    flex-direction: row;
+   } */
+   .conversation-container{
+    width: 6rem;
+  
+    
+   }
+   .chatMenuWrapper{
+    display: flex;
+    flex-direction: row;
+    
+   }
+   .chatOnline{
+    display: none;
+   }
+   .messenger{
+    display: flex;
+    flex-direction: column;
+    
+   }
+   .chatMenuWrapper input{
+    display: none;
+   }
+}
 .chatMenu{
     flex: 3.5;
 }

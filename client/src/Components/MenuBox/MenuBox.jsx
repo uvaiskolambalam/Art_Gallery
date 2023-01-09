@@ -3,7 +3,7 @@ import './MenuBox.css'
 import HomeIcon from '../../Assets/home.svg'
 import FriendsIcon from '../../Assets/friends.svg'
 import MessageIcon from '../../Assets/chat.svg'
-import NotificationIcon from '../../Assets/notification.svg'
+import SaveIcon from '../../Assets/save.svg'
 import SettingsIcon from '../../Assets/settings.svg'
 import LogoutIcon from '../../Assets/logout.svg'
 import profile from '../../Assets/person.svg'
@@ -50,10 +50,12 @@ const MenuBox = () => {
           <p>Message</p>
         </div>
         </NavLink>
-        <div className='MenuBox-item'>
-          <img src={NotificationIcon} alt="" />
-          <p>Notification</p>
+      <NavLink to='/savedPosts'>
+      <div className='MenuBox-item'>
+          <img src={SaveIcon} alt="" />
+          <p>Saved Posts</p>
         </div>
+        </NavLink>
         <div className='MenuBox-item'>
           <img src={SettingsIcon} alt="" />
           <p>Settings</p>

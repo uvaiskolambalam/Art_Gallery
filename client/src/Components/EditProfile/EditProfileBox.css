@@ -1,4 +1,4 @@
-.editProfile-heading{
+.editProfile-heading {
     display: flex;
     flex-direction: column;
     gap: .5rem;
@@ -11,34 +11,39 @@
     align-items: center;
     justify-content: center;
     background-color: white;
-   
+
 
 }
-.editProfile-heading p{
+
+.editProfile-heading p {
     font-size: 2rem;
 }
-.EditProfileBox{
+
+.EditProfileBox {
     display: flex;
     flex-direction: column;
     width: 95%;
 
 }
-.editProfile-container{
+
+.editProfile-container {
     display: flex;
-    
+
     gap: 2rem;
-    
+
 }
-.editProfile-details-left{
+
+.editProfile-details-left {
     display: flex;
     flex-direction: column;
-   
+
     width: 100%;
     flex: 1;
- 
-  
+
+
 }
-.editProfile-details-one{
+
+.editProfile-details-one {
     display: flex;
     flex-direction: column;
     gap: .5rem;
@@ -50,7 +55,8 @@
     margin-bottom: 2rem;
     background-color: white;
 }
-.editProfile-details-right{
+
+.editProfile-details-right {
     display: flex;
     flex-direction: column;
     gap: .5rem;
@@ -64,9 +70,9 @@
     background-color: white;
 }
 
-.MyPhotos{
+.MyPhotos {
     display: grid;
-    grid-template-columns:25% 25% 25% 25%;
+    grid-template-columns: 25% 25% 25% 25%;
     gap: .4rem;
     border-radius: 10px;
 
@@ -74,59 +80,70 @@
 }
 
 .MyPhotos-image-container {
-   
+
     height: 5rem;
-   
+
     overflow: hidden;
     display: flex;
     justify-content: space-between;
     align-items: center;
     object-fit: cover;
-    
+
 }
-.MyPhotos-image-container img{
+
+.MyPhotos-image-container img {
     width: 100%;
-    
+
 }
-.MyPhotos-name :nth-child(1){
+
+.MyPhotos-name :nth-child(1) {
     font-weight: 600;
 }
-.MyPhotos-name{
+
+.MyPhotos-name {
     display: flex;
     justify-content: space-between;
 }
-.MyPhotos-name :nth-child(2){
+
+.MyPhotos-name :nth-child(2) {
     color: blue;
     font-size: .7rem;
 
 }
-.about-details{
+
+.about-details {
     display: flex;
     gap: .5rem;
     flex-direction: column;
 }
-.about-details-content img{
-   width: 1rem;
-    
+
+.about-details-content img {
+    width: 1rem;
+
 }
-.about-details-content{
+
+.about-details-content {
     display: flex;
     align-items: center;
     gap: .7rem;
 }
-.More-details{
+
+.More-details {
     display: flex;
     gap: .7rem;
 }
-.More-details img{
+
+.More-details img {
     width: 1rem;
 }
-.title-button{
+
+.title-button {
     display: flex;
     justify-content: space-between;
 }
-@media screen and (max-width:1024px){
-    .editProfile-container{
+
+@media screen and (max-width:1024px) {
+    .editProfile-container {
         display: flex;
         flex-direction: column;
     }

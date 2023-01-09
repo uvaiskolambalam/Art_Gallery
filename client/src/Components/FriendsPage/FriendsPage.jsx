@@ -1,7 +1,6 @@
 import React from "react";
 
 import "./FriendsPage.css";
-import profile from "../../Assets/Profile img.svg";
 import Url from "../Instence/Base_uel";
 import { useSelector } from "react-redux";
 import { useState } from "react";
@@ -13,8 +12,6 @@ import followIcon from "../../Assets/follow.png";
 import unFollowIcon from "../../Assets/unFollow.png";
 const FriendsPage = () => {
   const user = useSelector((state) => state.user);
-  //const userPic = useSelector((state) => state.user);
-  //console.log(user,'uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu');
   const [friends, setFriends] = useState([]);
   const [users, setUsers] = useState([]);
   const [render, setRender] = useState(true);
@@ -27,12 +24,12 @@ const FriendsPage = () => {
 
   const getUsers = async () => {
     const response = await Url.post("/getUsers", { userId });
-     setUsers(response.data.users);
+    setUsers(response.data.users);
   };
 
   const getFriends = async () => {
     const response = await Url.post("/getFriends", { userId });
-     setFriends(response.data.friends);
+    setFriends(response.data.friends);
   };
 
   const handleFollow = async (followId) => {
@@ -40,48 +37,47 @@ const FriendsPage = () => {
       userId: userId,
       followId: followId,
     };
-    const response = await Url.post("/follow", followData);
+    await Url.post("/follow", followData);
     setRender(!render)
-    console.log(response.data.success, "friends page");
   };
 
 
-  const handleSearchFriends=(values)=>{
+  const handleSearchFriends = (values) => {
     setSearch(values)
     if (search !== '') {
       const filteredData = friends.filter((item) => {
-          return Object.values(item).join('').toLowerCase().includes(search.toLowerCase())
+        return Object.values(item).join('').toLowerCase().includes(search.toLowerCase())
       })
       setFilteredResults(filteredData)
-  }
-  else{
+    }
+    else {
       setFilteredResults(friends)
-  }
+    }
 
   }
 
-  const handleSearchUsers =(values)=>{
+  const handleSearchUsers = (values) => {
     setSearchUsers(values)
-    if (searchUsers !== ''  ) {
+    if (searchUsers !== '') {
       const filteredData = users.filter((item) => {
-          return Object.values(item).join('').toLowerCase().includes(searchUsers.toLowerCase())
+        return Object.values(item).join('').toLowerCase().includes(searchUsers.toLowerCase())
       })
       setFilteredResultsUsers(filteredData)
-  }
-  else{
-    setFilteredResultsUsers(users)
-  }
+    }
+    else {
+      setFilteredResultsUsers(users)
+    }
 
   }
 
- 
 
- 
+
+
 
   useEffect(() => {
     getUsers()
     getFriends()
-   }, [render]);
+  }, [render]);
   return (
     <>
       <div className="top-container">
@@ -94,12 +90,12 @@ const FriendsPage = () => {
               </div>
               <div className="search">
                 <img src={searchColorIcon} alt="" />
-                <input placeholder="search your friend..." type="text" onChange={(e)=>handleSearchFriends(e.target.value)} />
+                <input placeholder="search your friend..." type="text" onChange={(e) => handleSearchFriends(e.target.value)} />
               </div>
             </div>
-              
+
             <div className="FriendPage-body">
-              {search.length > 1?(
+              {search.length > 1 ? (
                 filteredResultsFriends.map((item, i) => (
                   <div className="body-container" key={i}>
                     <div className="friendsPage-One">
@@ -112,7 +108,7 @@ const FriendsPage = () => {
                     </div>
                     <div>
                       <div>
-                       
+
                         <button
                           className="button-general"
                           id="follow-btn"
@@ -129,7 +125,7 @@ const FriendsPage = () => {
                     </div>
                   </div>
                 ))
-              ):(
+              ) : (
                 friends.map((item, i) => (
                   <div className="body-container" key={i}>
                     <div className="friendsPage-One">
@@ -142,7 +138,7 @@ const FriendsPage = () => {
                     </div>
                     <div>
                       <div>
-                       
+
                         <button
                           className="button-general"
                           id="follow-btn"
@@ -160,7 +156,7 @@ const FriendsPage = () => {
                   </div>
                 ))
               )}
-             
+
             </div>
           </div>
         </div>
@@ -173,11 +169,11 @@ const FriendsPage = () => {
               </div>
               <div className="search">
                 <img src={searchColorIcon} alt="" />
-                <input placeholder="search your friend..." type="text" onChange={(f)=>handleSearchUsers(f.target.value)}/>
+                <input placeholder="search your friend..." type="text" onChange={(f) => handleSearchUsers(f.target.value)} />
               </div>
             </div>
             <div className="FriendPage-body">
-              {searchUsers.length > 1?(
+              {searchUsers.length > 1 ? (
                 filteredResultsUsers.map((item, i) => (
                   <div className="body-container" key={i}>
                     <div className="friendsPage-One">
@@ -190,7 +186,7 @@ const FriendsPage = () => {
                     </div>
                     <div>
                       <div>
-                       
+
                         <button
                           className="button-general"
                           id="follow-btn"
@@ -207,7 +203,7 @@ const FriendsPage = () => {
                     </div>
                   </div>
                 ))
-              ):(
+              ) : (
                 users.map((item, i) => (
                   <div className="body-container" key={i}>
                     <div className="friendsPage-One">
@@ -220,7 +216,7 @@ const FriendsPage = () => {
                     </div>
                     <div>
                       <div>
-                       
+
                         <button
                           className="button-general"
                           id="follow-btn"
@@ -238,9 +234,9 @@ const FriendsPage = () => {
                   </div>
                 ))
               )}
-             
+
             </div>
-            
+
           </div>
         </div>
       </div>
